@@ -44,18 +44,15 @@ const LoginPage = () => {
         },
         onError: (error) => {
             console.error('Registration Failed:', error);
-
-            
         }
     })
-
     const handleLoginInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setLoginForm(prev =>({
             ...prev, [name]: value
         }))
     }
-    
+
     const handleRegisterInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setRegisterForm(prev =>({
@@ -79,20 +76,17 @@ const LoginPage = () => {
     return(
         <div className='min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4'>
             <div className='bg-white rounded-2xls shadow-2xl w-full max-w-md p-8'>
-                {/* Header */}
                 <div className='text-center mb-8'>
                     <h1 className='text-3xl font-bold text-gray-600 rounded-lg p-1'>
-                        {isLogin ? 'Hai Hello' : 'Creaate Account'}
+                    {isLogin ? 'Hai Hello' : 'Create Account'}
                     </h1>
                     <p className='text-gray-600'>
                         {isLogin ? 'Sing in your account': 'Sign up for bagong account'}
                     </p>
                 </div>
-                {/* Toggle bottons*/}
                 <div className='flex mb-6 bg-gray-100 rounded-lg p-1'>
                     <button onClick={() => setIsLogin(true)} className={`flex-1 py-2 px-4 rounded-mb text-sm font-medium transition-all ${isLogin ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-600 hover:text-gray-800'}`}>Register</button>
                 </div>
-                {/* LoginForm */}
                 {isLogin ? (
                     <form onSubmit={handleLoginSubmit} className='space-y-6'>
                         <div>
@@ -111,22 +105,21 @@ const LoginPage = () => {
                             {loginMutation.isPending ? (
                                 <>
                                     <svg className='animate-spin -m1-1 mr-3 h-5 w-5 text-white' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'>
-                                        <circle className='opacity-25' cx="12" cy="12" r="10" stroke='currentColor' strokeWidth='4'></circle>
-                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938A7.962 7.962 0 016 17.291z"></path>
+                                    <circle className='opacity-25' cx="12" cy="12" r="10" stroke='currentColor' strokeWidth='4'></circle>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938A7.962 7.962 0 016 17.291z"></path>
                                     </svg>
                                     Signing in napo
                                 </>
                             ): null}
-                                'Sign In'
+                            Sign In
                         </button>
                     </form>
                 ): null}
-                {/* Register Form */}
                 {!isLogin ? (
                     <form onSubmit={handleRegisterSubmit} className="space-y-6">
                         <div>
                             <label htmlFor="reg-name" className="block text-sm font-medium text-gray-700 mb-2">
-                                Full Name po
+                                Full name mo
                             </label>
                             <input type="text" id="reg-name" name="name" value={registerForm.name} onChange={handleRegisterInputChange} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Enter your full name"/>
                         </div>
@@ -138,18 +131,18 @@ const LoginPage = () => {
                         </div>
                         <div>
                             <label htmlFor="reg-password" className="block text-sm font-medium text-gray-700 mb-2">
-                                Password
+                                Password here
                             </label>
                             <input type="password" id="reg-password" name="password" value={registerForm.password} onChange={handleRegisterInputChange} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Create a password"/>
                         </div>
                         <div>
                             <label htmlFor="reg-confirm-password" className="block text-sm font-medium text-gray-700 mb-2">
-                                Confirm Password
+                                Confirm password  po
                             </label>
                             <input type="password" id="reg-confirm-password" name="confirmPassword"  value={registerForm.confirmPassword} onChange={handleRegisterInputChange} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"  placeholder="Confirm your password"/>
                         </div>
                         <button
-                            type="submit" disabled={registerMutation.isPending} className="w-full bg-green-600 hover:bg-green-700 disabled:bg-green-400 text-white font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center"> {registerMutation.isPending ? (
+                            type="submit" disabled={registerMutation.isPending} className="w-full bg-green-300 hover:bg-green-400 disabled:bg-green-500 text-white font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center"> {registerMutation.isPending ? (
                                 <>
                                     <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -161,28 +154,22 @@ const LoginPage = () => {
                                 'Create Account'
                             )}
                         </button>
-                        {/* Status Messages */}
                         {registerMutation.isError && (
                             <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                                <p className="text-red-800 text-sm">Registration failed Please try again</p>
+                                <p className="text-red-800 text-sm">Registration failed ulitin mo ulit</p>
                             </div>
                         )}
                         {registerMutation.isSuccess && (
                             <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                                <p className="text-green-800 text-sm">Account created successfully Please sign in</p>
+                                <p className="text-green-800 text-sm">Success na ang pag create ng iyong account</p>
                             </div>
                         )}
                     </form>
                 ) : null}
-                {/* Footer */}
                 <div className="mt-8 text-center">
                     <p className="text-sm text-gray-600">
                         {isLogin ? "Don't have an account create na " : "Already have an account wag ng gumawa "}
-                        <button
-                            onClick={() => setIsLogin(!isLogin)}
-                            className="font-medium text-blue-600 hover:text-blue-500 transition-colors">
-                            {isLogin ? 'Sign up' : 'Sign in'}
-                        </button>
+                        <button onClick={() => setIsLogin(!isLogin)} className="font-medium text-blue-600 hover:text-blue-500 transition-colors"> {isLogin ? 'Sign up' : 'Sign in'}</button>
                     </p>
                 </div>
             </div>
